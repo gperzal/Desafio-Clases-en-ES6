@@ -19,38 +19,7 @@ Sigue estos pasos para configurar tu proyecto con Babel
 
 <code>npm install --save-dev @babel/preset-env @babel/cli @babel/core @babel/polyfill core-js  </code>
 
-3. Configuración de Babel
-
-Crea un archivo babel.config.json en la raíz del proyecto con el siguiente contenido:
-
-<code>
-{
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "edge": "17",
-          "firefox": "60",
-          "chrome": "67",
-          "safari": "11.1"
-        },
-        "useBuiltIns": "usage",
-        "corejs": "3.6.5"
-      }
-    ]
-  ]
-}
-</code>
-4. Estructura del Proyecto
-Crea una carpeta src para tu código fuente:
-
-<code> 
-mkdir src
-cd src 
-</code>
-
-5. Transpilación de Código
+3. Transpilación de Código
 Usa el siguiente comando para transpilar el código de la carpeta src a dist:
 
 npx babel src/ -d dist/
@@ -58,18 +27,6 @@ npx babel src/ -d dist/
 O con configuración específica:
 
 <code> npx babel src/ -d dist/ --config-file ./babel.config.json </code>
-
-
-## Scripts en package.json
-Edita tu package.json para incluir scripts útiles:
-
-<code>
-"scripts": {
-  "start": "npm run build && node dist/main.js",
-  "build": "npx babel src/ -d dist/ --config-file ./babel.config.json",
-  "test": "echo \"Error: no test specified\" && exit 1"
-}
-</code>
 
 ## Uso
 Para compilar y ejecutar el proyecto:
@@ -79,6 +36,16 @@ Para compilar y ejecutar el proyecto:
 
 Este comando primero transpilará tu código de ES6+ a ES5 y luego ejecutará el archivo main.js desde la carpeta dist.
 
+## Personalización del Archivo main.js
+Dentro del archivo main.js, puedes personalizar ciertos parámetros según tus necesidades. Localiza y edita las siguientes variables:
+
+- impuestos: Esta se divide en 2 parametros segun el metodo calcularImpuesto()
+    - montoBrutoAnual: 
+        Define el monto bruto anual. (1er Parametro de impuestos)
+    - Deducciones: 
+        Especifica las deducciones aplicables.(2do Parametro de impuestos).
+
+- cliente: Corresponde al nombre del cliente para el cálculo de impuestos.
 
 ## Contribuir
 
